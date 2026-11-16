@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.2",
+  "status": "proposed_not_implemented",
+  "unity_version": "6000.3.13f1",
+  "feature_set_version": "fixed-six-draft-v1",
+  "feature_ids": [
+    "shade_proximity",
+    "central_openness",
+    "path_efficiency",
+    "view_openness",
+    "greenery",
+    "activity"
+  ],
+  "interaction_mode": "single_proposal",
+  "learner": {
+    "id": "explicit_retained_delta",
+    "eta": 0.3,
+    "history_window": 1,
+    "norm_cap": 1.0,
+    "direction_guard": true,
+    "repeated_edit_mode": "shadow",
+    "retained_evidence": {
+      "general_lifetime": "session",
+      "current_edit_lifetime": "episode",
+      "uncertain_scope": "episode",
+      "reuse_policy": "once_per_committed_episode",
+      "relatedness": "feature_and_requested_relation",
+      "status": "provisional_unconfirmed"
+    },
+    "direction_guard_status": "provisional_unconfirmed",
+    "repeated_edit": {
+      "enabled": false,
+      "save_all_operations": true,
+      "history_window_episodes": null,
+      "minimum_repetitions": null,
+      "note": "閾値・更新式は未決。明示方式のhistory_windowとは別。"
+    }
+  },
+  "planner": {
+    "candidate_limit": 64,
+    "search_timeout_seconds": 2,
+    "change_cost_weight": 0.1,
+    "seed": 42
+  },
+  "llm": {
+    "provider": null,
+    "model": null,
+    "api_key_env": "RESEARCH_LLM_API_KEY",
+    "mock_enabled": true,
+    "max_retries": 2
+  },
+  "experiment": {
+    "max_user_utterances": 10,
+    "max_consecutive_failures": 3,
+    "api_budget": null,
+    "note": "回数は動作確認用の暫定値。実API実験前に予算とモデルを設定する。"
+  }
+}

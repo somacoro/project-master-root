@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "note": "assertionはテストランナーで実装する宣言的な条件。現時点では実行コードではない。各ケースは独立した初期シーンから開始。",
+  "cases": [
+    {
+      "id": "T01",
+      "scene": "scene.example.json",
+      "selected_ids": [
+        "bench-001"
+      ],
+      "utterance": "このベンチを木に近づけて",
+      "expected": {
+        "resolved_ids": [
+          "bench-001"
+        ],
+        "action": "move",
+        "assertions": [
+          "distance(bench-001,tree-001) decreases",
+          "non_target_objects unchanged",
+          "geometry valid"
+        ]
+      }
+    },
+    {
+      "id": "T02",
+      "scene": "scene.example.json",
+      "selected_ids": [],
+      "utterance": "ベンチを右へ動かして",
+      "expected": {
+        "status": "clarification_required",
+        "assertions": [
+          "committed_scene unchanged",
+          "weights unchanged"
+        ]
+      }
+    },
+    {
+      "id": "T05",
+      "scene": "scene.example.json",
+      "utterance": "tree-001の近くへbench-001を移動して",
+      "feedback": "reject",
+      "expected": {
+        "assertions": [
+          "committed_scene unchanged",
+          "weights unchanged",
+          "scene_revision unchanged"
+        ]
+      }
+    },
+    {
+      "id": "T09",
+      "scene": "scene.example.json",
+      "selected_ids": [
+        "bench-001"
+      ],
+      "utterance": "これを少し右へ動かして",
+      "feedback": "accept",
+      "learner": "explicit_masked_delta",
+      "expected": {
+        "preference_evidence": [],
+        "assertions": [
+          "weights unchanged",
+          "scene_revision increments once"
+        ]
+      }
+    }
+  ]
+}
